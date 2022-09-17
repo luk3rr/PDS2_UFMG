@@ -7,28 +7,25 @@
 #include <iomanip>
  
 void Playlist::adicionar_musica(std::string nome, std::string artista, std::string album, float duracao) {
-    Node* elemento = new Node;
-    elemento->proximo = nullptr;
-
     this->idMusicaPlaylist += 1;
     Musica* musica = new Musica(this->idMusicaPlaylist, nome, artista, album, duracao);
-    elemento->musica = musica;
+    musica->proximo = nullptr;
 
     if (this->primeiro == nullptr) {
-        this->primeiro = elemento;
-        this->ultimo = elemento;
+        this->primeiro = musica;
+        this->ultimo = musica;
     } 
     else {
-        this->ultimo->proximo = elemento;
-        this->ultimo = elemento;
+        this->ultimo->proximo = musica;
+        this->ultimo = musica;
     }
 }
 
 Musica* Playlist::buscar_musica(std::string nome, std::string artista) {
-    Node* cacador = this->primeiro;
+    Musica* cacador = this->primeiro;
     while (cacador != nullptr) {
-        if (cacador->musica->_artista == artista && cacador->musica->_nome == nome) {
-            return cacador->musica;
+        if (cacador->_artista == artista && cacador->_nome == nome) {
+            return cacador;
         } 
         else {
             cacador = cacador->proximo;
@@ -38,11 +35,11 @@ Musica* Playlist::buscar_musica(std::string nome, std::string artista) {
 }
 
 void Playlist::remover_musica(int id) {
-    Node* cacador = this->primeiro;
-    Node* noAnterior = nullptr;
+    Musica* cacador = this->primeiro;
+    Musica* noAnterior = nullptr;
 
     while (cacador != nullptr) {
-        if (cacador->musica->_id == id) {
+        if (cacador->_id == id) {
             if (this->primeiro == cacador ) {
                 if (this->ultimo == cacador) {
                     // Caso a musica seja a primeira e unica da playlist
@@ -75,21 +72,21 @@ void Playlist::remover_musica(int id) {
 }
 
 void Playlist::favoritar_musica(int id) {
-    Node* cacador = this->primeiro;
-    Node* noAnterior = nullptr;
+    Musica* cacador = this->primeiro;
+    Musica* noAnterior = nullptr;
     
     while (cacador != nullptr) {
-        if (cacador->musica->_id == id) {
+        if (cacador->_id == id) {
             if (this->primeiro == cacador) { 
                 // Caso a musica seja a primeira da playlist
-                if (cacador->musica->_favorita == false) {
-                    cacador->musica->_favorita = true;
+                if (cacador->_favorita == false) {
+                    cacador->_favorita = true;
                 }
             } 
             else if (this->ultimo != cacador) { 
                 // Caso a musica esteja no meio da playlist
-                if (cacador->musica->_favorita == false) {
-                    cacador->musica->_favorita = true;
+                if (cacador->_favorita == false) {
+                    cacador->_favorita = true;
                     noAnterior->proximo = cacador->proximo;
                     cacador->proximo = this->primeiro;
                     this->primeiro = cacador;
@@ -97,8 +94,8 @@ void Playlist::favoritar_musica(int id) {
             }
             else {
                 // Caso a musica seja a ultima da playlist
-                if (cacador->musica->_favorita == false) {
-                    cacador->musica->_favorita = true;
+                if (cacador->_favorita == false) {
+                    cacador->_favorita = true;
                     this->ultimo = noAnterior;
                     noAnterior->proximo = nullptr;
                     cacador->proximo = this->primeiro;
@@ -113,22 +110,22 @@ void Playlist::favoritar_musica(int id) {
 }
 
 void Playlist::desfavoritar_musica(int id) {
-    Node* cacador = this->primeiro;
-    Node* noAnterior = nullptr;
+    Musica* cacador = this->primeiro;
+    Musica* noAnterior = nullptr;
     
     while (cacador != nullptr) {
-        if (cacador->musica->_id == id) {
+        if (cacador->_id == id) {
             if (this->primeiro == cacador) {
                 if (this->ultimo == cacador) {
                     // Caso a musica seja a primeira e unica da playlist
-                    if (cacador->musica->_favorita == true) {
-                        cacador->musica->_favorita = false;
+                    if (cacador->_favorita == true) {
+                        cacador->_favorita = false;
                     }
                 }
                 else {
                     // Caso a musica seja a primeira mas nao a unica da playlist
-                    if (cacador->musica->_favorita == true) {
-                        cacador->musica->_favorita = false;
+                    if (cacador->_favorita == true) {
+                        cacador->_favorita = false;
                         this->primeiro = cacador->proximo;
                         this->ultimo->proximo = cacador;
                         this->ultimo = cacador;
@@ -139,8 +136,8 @@ void Playlist::desfavoritar_musica(int id) {
             else {
                 if (cacador != this->ultimo) { 
                     // Caso a musica esteja no meio da playlist
-                    if (cacador->musica->_favorita == true) {
-                        cacador->musica->_favorita = false;
+                    if (cacador->_favorita == true) {
+                        cacador->_favorita = false;
                         noAnterior->proximo = cacador->proximo;
                         this->ultimo->proximo = cacador;
                         this->ultimo = cacador;
@@ -149,8 +146,8 @@ void Playlist::desfavoritar_musica(int id) {
                 }
                 else {
                     // Caso a musica seja a ultima da playlist
-                    if (cacador->musica->_favorita == true) {
-                        cacador->musica->_favorita = false;
+                    if (cacador->_favorita == true) {
+                        cacador->_favorita = false;
                     }
                 }
             }
@@ -162,12 +159,12 @@ void Playlist::desfavoritar_musica(int id) {
 }
 
 void Playlist::imprimir() {
-    Node* cacador = this->primeiro;
+    Musica* cacador = this->primeiro;
     double tempoTotal = 0;
     
     while (cacador != nullptr) {
-        cacador->musica->imprimir_dados();
-        tempoTotal += cacador->musica->_duracao;
+        cacador->imprimir_dados();
+        tempoTotal += cacador->_duracao;
         cacador = cacador->proximo;
     }
     int hh = tempoTotal/60;

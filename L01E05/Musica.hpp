@@ -9,7 +9,8 @@ typedef struct Musica {
     std::string _artista; 
     std::string _album; 
     float _duracao; 
-    bool _favorita; 
+    bool _favorita;
+    Musica* proximo;
 
     Musica(int id, std::string nome, std::string artista, std::string album, float duracao);
 
