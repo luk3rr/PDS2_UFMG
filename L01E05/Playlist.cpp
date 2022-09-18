@@ -45,27 +45,24 @@ void Playlist::remover_musica(int id) {
                     // Caso a musica seja a primeira e unica da playlist
                     this->primeiro = nullptr;
                     this->ultimo = nullptr;
-                } 
-                else {
+
+                } else {
                     // Caso a musica seja a primeira mas nao a ultima da playlist
                     this->primeiro = cacador->proximo;
                 }
-            }
-            else if (cacador != this->primeiro) {
-                if (cacador != this->ultimo) {
-                    // Caso a musica esteja no meio da playlist
-                    noAnterior->proximo = cacador->proximo;
-                }
-                else {
-                    // Caso a musica seja a ultima da playlist
-                    this->ultimo = noAnterior;
-                    noAnterior->proximo = nullptr;
 
-                }
+            } else if (cacador != this->ultimo) {
+                // Caso a musica esteja no meio da playlist
+                noAnterior->proximo = cacador->proximo;
+
+            } else {
+                // Caso a musica seja a ultima da playlist
+                this->ultimo = noAnterior;
+                noAnterior->proximo = nullptr;
             }
         delete cacador;
         break;
-       }
+        }
         noAnterior = cacador;
         cacador = cacador->proximo;
     }
