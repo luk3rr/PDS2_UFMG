@@ -23,6 +23,7 @@ int main() {
                 std::cin >> duracao;
                 playlist.adicionar_musica(nome, artista, album, duracao); 
                 break;
+
             case 's':
                 std::cin >> nome;
                 std::cin >> artista;

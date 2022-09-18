@@ -14,8 +14,8 @@ void Playlist::adicionar_musica(std::string nome, std::string artista, std::stri
     if (this->primeiro == nullptr) {
         this->primeiro = musica;
         this->ultimo = musica;
-    } 
-    else {
+
+    } else {
         this->ultimo->proximo = musica;
         this->ultimo = musica;
     }
@@ -26,8 +26,8 @@ Musica* Playlist::buscar_musica(std::string nome, std::string artista) {
     while (cacador != nullptr) {
         if (cacador->_artista == artista && cacador->_nome == nome) {
             return cacador;
-        } 
-        else {
+
+        } else {
             cacador = cacador->proximo;
         }
     }
@@ -60,8 +60,8 @@ void Playlist::remover_musica(int id) {
                 this->ultimo = noAnterior;
                 noAnterior->proximo = nullptr;
             }
-        delete cacador;
-        break;
+            delete cacador;
+            break;
         }
         noAnterior = cacador;
         cacador = cacador->proximo;
@@ -146,6 +146,7 @@ void Playlist::imprimir() {
         tempoTotal += cacador->_duracao;
         cacador = cacador->proximo;
     }
+
     int hh = tempoTotal/60;
     double segundosSemHora = (tempoTotal - hh*60) * 60;
     int mm = segundosSemHora/60;
