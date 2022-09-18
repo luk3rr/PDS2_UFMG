@@ -77,32 +77,28 @@ void Playlist::favoritar_musica(int id) {
     
     while (cacador != nullptr) {
         if (cacador->_id == id) {
+            if (cacador->_favorita == true) break;
             if (this->primeiro == cacador) { 
                 // Caso a musica seja a primeira da playlist
-                if (cacador->_favorita == false) {
-                    cacador->_favorita = true;
-                }
-            } 
-            else if (this->ultimo != cacador) { 
-                // Caso a musica esteja no meio da playlist
-                if (cacador->_favorita == false) {
-                    cacador->_favorita = true;
-                    noAnterior->proximo = cacador->proximo;
-                    cacador->proximo = this->primeiro;
-                    this->primeiro = cacador;
-                }
-            }
-            else {
+                cacador->_favorita = true;
+
+            } else if (this->ultimo == cacador) {
                 // Caso a musica seja a ultima da playlist
-                if (cacador->_favorita == false) {
-                    cacador->_favorita = true;
-                    this->ultimo = noAnterior;
-                    noAnterior->proximo = nullptr;
-                    cacador->proximo = this->primeiro;
-                    this->primeiro = cacador;
-                }
+                cacador->_favorita = true;
+                cacador->proximo = this->primeiro;
+                this->ultimo = noAnterior;
+                noAnterior->proximo = nullptr;
+                this->primeiro = cacador;
+
+            } else {
+                // Caso a musica esteja no meio da playlist
+                cacador->_favorita = true;
+                noAnterior->proximo = cacador->proximo;
+                cacador->proximo = this->primeiro;
+                this->primeiro = cacador;
+
             }
-        break;
+            break;
         }
         noAnterior = cacador;
         cacador = cacador->proximo;
