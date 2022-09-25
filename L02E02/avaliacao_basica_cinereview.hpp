@@ -14,7 +14,6 @@ void avaliacao_basica() {
 
     Usuario* usuario = new Usuario("UL1", "UN1");
     usuario->imprimir_info();
-    delete usuario;
 
     cout << "----------" << endl;
 
