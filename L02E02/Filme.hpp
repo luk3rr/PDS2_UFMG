@@ -12,7 +12,7 @@ class Filme {
         std::string _nome;
         std::string _genero;
         int _duracao;
-        std::vector<Review> _reviews;
+        std::vector<Review*> _reviews;
 
     public:
         Filme(int id, std::string nome, std::string genero, int duracao);

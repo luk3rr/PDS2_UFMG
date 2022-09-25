@@ -13,14 +13,14 @@ Filme::Filme(int id, std::string nome, std::string genero, int duracao) {
 
 Review* Filme::adicionar_review(std::string comentario, float nota) {
     Review* novoReview = new Review(this, comentario, nota);
-    this->_reviews.push_back(*novoReview);
+    this->_reviews.push_back(novoReview);
     return novoReview;
 }
 
 void Filme::imprimir_nota_consolidada() {
     double sum = 0;
-    for (Review i : this->_reviews) {
-        sum += i.retornar_nota();
+    for (Review* i : this->_reviews) {
+        sum += i->retornar_nota();
     }
     
     if (this->_reviews.empty()) {
