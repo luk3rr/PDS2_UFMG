@@ -13,23 +13,17 @@ int main() {
     while (std::cin >> comando) {
         switch (comando) {
             case 'u':
-                std::cin >> login;
-                std::cin >> nome;
+                std::cin >> login >> nome;
                 imdb.adicionar_usuario(login, nome);
                 break;
 
             case 'f':
-                std::cin >> nome;
-                std::cin >> genero;
-                std::cin >> duracao;
+                std::cin >> nome >> genero >> duracao;
                 imdb.adicionar_filme(nome, genero, duracao);
                 break;
 
             case 'r':
-                std::cin >> id;
-                std::cin >> login;
-                std::cin >> comentario;
-                std::cin >> nota;
+                std::cin >> id >> login >> comentario >> nota;
                 imdb.adicionar_review(id, login, comentario, nota);
                 break;
 
