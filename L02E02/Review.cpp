@@ -1,7 +1,5 @@
-#include "Filme.hpp"
 #include "Review.hpp"
-
-#include <iostream>
+#include "Filme.hpp"
 
 Review::Review(Filme* filme, std::string comentario, float nota) {
     this->_filme = filme;

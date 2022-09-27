@@ -1,7 +1,4 @@
 #include "Usuario.hpp"
-#include "Review.hpp"
-#include <iostream>
-#include <iterator>
 
 Usuario::Usuario(std::string login, std::string nome) {
     this->_login = login;

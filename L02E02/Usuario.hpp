@@ -1,10 +1,12 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 
-#include <string>
-#include <vector>
-
 #include "Review.hpp"
+
+#include <string>
+#include <iostream>
+#include <iterator>
+#include <vector>
 
 class Usuario {
     private:

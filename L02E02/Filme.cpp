@@ -1,9 +1,5 @@
 #include "Filme.hpp"
 
-#include <iostream>
-#include <iomanip>
-#include <string>
-
 Filme::Filme(int id, std::string nome, std::string genero, int duracao) {
     this->_id = id;
     this->_nome = nome;

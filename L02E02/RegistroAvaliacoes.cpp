@@ -1,6 +1,4 @@
 #include "RegistroAvaliacoes.hpp"
-#include "Usuario.hpp"
-#include "Filme.hpp"
 
 void RegistroAvaliacoes::adicionar_usuario(std::string login, std::string nome) {
     Usuario* novoUsuario = new Usuario(login, nome);

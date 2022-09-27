@@ -1,9 +1,5 @@
 // NÃO ALTERE ESSA LINHA
 #include "avaliacao_basica_cinereview.hpp"
-#include "RegistroAvaliacoes.hpp"
-
-#include <iostream>
-
 
 int main() {
   

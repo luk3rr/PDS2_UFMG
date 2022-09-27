@@ -1,10 +1,12 @@
 #ifndef FILME_H
 #define FILME_H
 
+#include "Review.hpp"
+
 #include <string>
 #include <vector>
-
-#include "Review.hpp"
+#include <iostream>
+#include <iomanip>
 
 class Filme {
     private:
