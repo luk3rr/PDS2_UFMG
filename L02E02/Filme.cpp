@@ -7,6 +7,12 @@ Filme::Filme(int id, std::string nome, std::string genero, int duracao) {
     this->_duracao = duracao;
 }
 
+Filme::~Filme() {
+    for (std::vector<Review*>::iterator it = _reviews.begin(); it != _reviews.end(); it++) {
+        delete *it;
+    }
+}
+
 Review* Filme::adicionar_review(std::string comentario, float nota) {
     Review* novoReview = new Review(this, comentario, nota);
     this->_reviews.push_back(novoReview);

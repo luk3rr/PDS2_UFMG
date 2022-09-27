@@ -19,6 +19,8 @@ class Filme {
     public:
         Filme(int id, std::string nome, std::string genero, int duracao);
 
+        ~Filme();
+
         Review* adicionar_review(std::string comentario, float nota);
 
         void imprimir_nota_consolidada();

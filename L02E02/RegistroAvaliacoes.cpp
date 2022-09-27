@@ -1,5 +1,14 @@
 #include "RegistroAvaliacoes.hpp"
 
+RegistroAvaliacoes::~RegistroAvaliacoes() {
+    for(std::map<std::string, Usuario*>::iterator it = _usuarios.begin(); it != _usuarios.end(); it++) {
+        delete it->second;
+    }
+    for(std::map<int, Filme*>::iterator it = _filmes.begin(); it != _filmes.end(); it++) {
+        delete it->second;
+    }
+}
+
 void RegistroAvaliacoes::adicionar_usuario(std::string login, std::string nome) {
     Usuario* novoUsuario = new Usuario(login, nome);
     this->_usuarios[login] = novoUsuario;

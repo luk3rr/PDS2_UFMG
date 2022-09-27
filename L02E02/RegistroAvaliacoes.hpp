@@ -13,6 +13,8 @@ class RegistroAvaliacoes {
         int contadorFilmes = 0;
 
     public:
+        ~RegistroAvaliacoes();
+
         void adicionar_usuario(std::string login, std::string nome);
 
         void adicionar_filme(std::string nome, std::string genero, int duracao);
