@@ -9,7 +9,8 @@ Review::Review(Filme* filme, std::string comentario, float nota) {
 }
 
 void Review::imprimir_dados() {
-    std::cout << this->nomeFilme << "\t" << this->_comentario << "\t" << this->_nota << std::endl;
+    std::cout << this->nomeFilme << "\t" << this->_comentario << "\t" << 
+        std::fixed << std::setprecision(1) << this->_nota << std::endl;
 }
 
 double Review::retornar_nota() {
