@@ -34,13 +34,12 @@ Aquario::Aquario(const Aquario &orig) {
     for (unsigned i = 0; i < orig._criaturas.size(); i++) {
         if (orig._criaturas[i]->get_subtipo() == "Polvo") {
             shared_ptr<Polvo> tmpCriatura = dynamic_pointer_cast<Polvo>(orig._criaturas[i]);
-            //shared_ptr<Polvo> novoPolvo = tmpCriatura;
-            this->_criaturas.push_back(tmpCriatura);
+            this->_criaturas.push_back(shared_ptr<Polvo>(new Polvo(*tmpCriatura)));
 
         } else if (orig._criaturas[i]->get_subtipo() == "Peixe") {
             shared_ptr<Peixe> tmpCriatura = dynamic_pointer_cast<Peixe>(orig._criaturas[i]);
-            //shared_ptr<Peixe> novoPeixe = tmpCriatura;
-            this->_criaturas.push_back(tmpCriatura);
+            this->_criaturas.push_back(shared_ptr<Peixe>(new Peixe(*tmpCriatura)));
+            
         }
     }
 }
