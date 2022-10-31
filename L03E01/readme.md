@@ -19,7 +19,7 @@ Especificações das classes a serem implementadas:
     - virtual ~Veiculo():  
         - Deve apenas imprimir: Destrutor Veiculo  
         - Destrutor da classe Veiculo precisa ser virtual, pois no caso abaixo ambos os destrutores ~Caminhao e ~Veiculo devem ser chamados. Entretanto, isso só ocorre quando é virtual. Esse assunto será tratado nas aulas de Polimorfismo.  
-            ```
+            ```c++
             Veiculo* vp;  
             vp = new Caminhao(120, 2, 1000);  
             delete vp;
@@ -99,16 +99,12 @@ Preco estimado: RS 151200,00
         Velocidade maxima: 120 km/h  
         Capacidade de passageiros: 1  
         Carga maxima: 1000 kg  
-```
-```
 Info: Veiculo 2  
 Preco estimado: RS 71000,00  
         Subtipo: Caminhao  
         Velocidade maxima: 100 km/h  
         Capacidade de passageiros: 4  
         Carga maxima: 200 kg  
-```
-```
 Info: Veiculo 3  
 Preco estimado: RS 600800,00 
         Subtipo: CaminhaoAutonomo  
@@ -116,13 +112,11 @@ Preco estimado: RS 600800,00
         Capacidade de passageiros: 0  
         Carga maxima: 1000 kg 
         Fabricante: Tesla  
- ```
 Destrutor Caminhao  
 Destrutor Veiculo  
 Destrutor CaminhaoAutonomo  
 Destrutor Caminhao  
 Destrutor Veiculo  
-```
 Info: Veiculo 2  
 Preco estimado: RS 71000,00
         Subtipo: Caminhao  
